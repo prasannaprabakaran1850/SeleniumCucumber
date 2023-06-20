@@ -2,6 +2,7 @@ package utils;
 
 import constants.Constants;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,7 +31,7 @@ public class Actions {
      * @param xpath
      */
 
-    public void clickElement(WebDriver driver,String xpath) {
+    public static void clickElement(WebDriver driver,String xpath) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.TIME_OUT));
         WebElement element= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         element.click();
@@ -43,7 +44,7 @@ public class Actions {
      * @param text
      */
 
-    public void enterText(WebDriver driver,String xpath, String text) {
+    public static void enterText(WebDriver driver,String xpath, String text) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.TIME_OUT));
         WebElement element= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         element.clear();
@@ -56,9 +57,30 @@ public class Actions {
      * @param xpath
      */
 
-    public String getText(WebDriver driver,String xpath) {
+    public static String getText(WebDriver driver,String xpath) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.TIME_OUT));
         WebElement element= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         return element.getText();
+    }
+
+    /**
+     *
+     * @param driver
+     * @param element
+     */
+    public static void clickElementWithJs(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+    }
+
+    /**
+     * This method is used to scroll
+     * @param driver
+     * @param scrollX
+     * @param scrollY
+     */
+    public static void scroll(WebDriver driver, int scrollX, int scrollY) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(" + scrollX + ", " + scrollY + ");");
     }
 }

@@ -8,8 +8,11 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/main/resources/Features",
         glue = "stepdefinitions",
-        plugin = {"pretty","html:target/HTMLReports"},
-        monochrome = true //formatted steps
+        plugin = {"pretty","html:target/HTMLReports.html"},
+        dryRun = false,
+        monochrome = true, //formatted steps,
+        tags = "@prasanna"
+
 )
 public class TestRunner {
 }
