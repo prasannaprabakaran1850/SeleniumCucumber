@@ -1,11 +1,16 @@
 package pages;
 
 import stepdefinitions.TestBase;
-import utils.Actions;
+import utils.Action;
 
 public class HomePage extends TestBase {
     public void clickDirectory(){
         String dashboard="//span[text()='Directory']/parent::a";
-        Actions.clickElement(driver,dashboard);
+        Action.clickElement(driver,dashboard);
+    }
+
+    public void clickTime(){
+        String dashboard="//span[text()='Time']/parent::a";
+        Action.clickElement(driver,dashboard);
     }
 }

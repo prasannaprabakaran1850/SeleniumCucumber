@@ -25,9 +25,11 @@ public class VerifyCEOStepDef {
  }
     @When("clicks the search button")
     public void clicks_the_search_button() {
+        directoryPage.clickSearchButton();
 
     }
     @Then("the user should see the CEO name as {string}")
-    public void the_user_should_see_the_ceo_name_as(String string) {
+    public void the_user_should_see_the_ceo_name_as(String expectedName) {
+        directoryPage.verifyDirectoryName(expectedName);
     }
 }

@@ -5,12 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Actions {
+public class Action {
     /**
      * This method is used get the WebElement
      *
@@ -82,5 +83,11 @@ public class Actions {
     public static void scroll(WebDriver driver, int scrollX, int scrollY) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(" + scrollX + ", " + scrollY + ");");
+    }
+
+    public static void mouseClickElement(WebDriver driver, WebElement element) {
+
+        Actions action = new Actions(driver);
+        action.click(element).perform();
     }
 }
